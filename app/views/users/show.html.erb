@@ -1,8 +1,14 @@
-<% if @user.id == current_user.id %>
-  <div class="avatar">
-    <%= image_tag @user.avatar.url if @user.avatar.present? %> 
-    <h3>Hey, <%= @user.name %>, bro!</h3>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <%= image_tag @user.avatar.url(:thumb) if @user.avatar.present? %> 
+      <h3>Hey, <%= @user.name %>, bro!</h3>
+      <%= render 'posts/posts' %>
+      <%= render 'posts/posts_form' %>
+    </div>
+    <div class="col">
+    </div>
   </div>
-<% else %>
-  <h3>Sorry, bro, it's not your page!</h3>
-<% end %>    
+</div>

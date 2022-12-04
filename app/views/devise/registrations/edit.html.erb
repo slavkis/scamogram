@@ -9,7 +9,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= image_tag @user.avatar.url if @user.avatar.present? %>
+          <%= image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>
         </div>
 
         <div class="field">

@@ -1,0 +1,10 @@
+<h5>Write your comment:</h5>
+<%= form_for(PostComment.new, url: post_post_comments_path(post_id: post.id)) do |f| %>
+  <form>
+    <div class="mb-3">
+      <%= f.label :body, class: "form-label" %><br />
+      <%= f.text_field :body, autofocus: true, autocomplete: "title", class: "form-control" %>
+    </div>
+    <%= f.submit "Comment", class: "btn btn-outline-primary btn-sm" %>
+  </form>
+<% end %>

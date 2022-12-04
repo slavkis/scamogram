@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     # Redirests signing out users back to sign-in
     get "users", to: "devise/sessions#new"
   end
+
+  # scope ":users/:id" do
+  #   resources :posts, only: [:create, :destroy]
+  # end
   devise_for :users, controllers: {
     confirmations: "users/confirmations",
     passwords: "users/passwords",
@@ -10,6 +14,8 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
   }
   root "main_pages#index"
-  get "users/:id", to: "users#show", as: 'user'
-  
+  resources :users, only: [:show]
+  resources :posts, only: [:create, :destroy] do
+    resources :post_comments, only: [:create, :destroy]
+  end
 end

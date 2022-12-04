@@ -8,12 +8,14 @@
       <li class="nav-item">
         <%= link_to "Main page", root_path, class: "nav-link" %> 
       </li>
-      <li class="nav-item">
-        <%= link_to "Profile", current_user, class: "nav-link" %>  
-      </li>
-      <li class="nav-item">
-        <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Profile", current_user, class: "nav-link" %>  
+        </li>
+        <li class="nav-item">
+          <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <% if user_signed_in? %>
           <%= link_to "Scam Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
