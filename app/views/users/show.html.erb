@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="col">
+    <div class="col" style="margin-top: 5em;">
       <%= image_tag @user.avatar.url(:thumb) if @user.avatar.present? %> 
-      <h3>Hey, <%= @user.name %>, bro!</h3>
+      <h4>Hey, <%= @user.name %>, bro!</h4>
       <%= render 'posts/posts' %>
       <%= render 'posts/posts_form' %>
     </div>

@@ -9,7 +9,7 @@
     Body: <%= post.body %>
   </ul>
   <ul>
-    <%= link_to "Destroy",
+    <%= link_to "Delete post",
       post_path(id: post.id, user_id: params[:id]),
       data: { turbo_method: :delete },
       class: "btn btn-outline-primary btn-sm" %>
