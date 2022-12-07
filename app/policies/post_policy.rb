@@ -7,7 +7,7 @@ class PostPolicy
   end
 
   def create?
-    @user.id == @post.user_id
+    true
   end
 
   def destroy?
