@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
+    authorize @post
     if @post.save
       flash[:success] = "Yep! Nice new post, bro!"
-      redirect_to current_user
+      redirect_to @post
     else
       flash[:danger] = "Be careful, bro!"
       redirect_to current_user

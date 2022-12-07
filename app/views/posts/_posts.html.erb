@@ -9,10 +9,12 @@
     Body: <%= post.body %>
   </ul>
   <ul>
+  <% if policy(post).destroy? %>
     <%= link_to "Delete post",
       post_path(id: post.id, user_id: params[:id]),
       data: { turbo_method: :delete },
       class: "btn btn-outline-primary btn-sm" %>
+  <% end %>
   </ul>
   <% post.post_comments.each do |post_comment| %>
   <ul>
@@ -22,8 +24,10 @@
     Comment: <%= post_comment.body %>
   </ul>
   <ul>
-    <%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id), data: { turbo_method: :delete },
+    <% if policy(post_comment).destroy? %>
+      <%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id), data: { turbo_method: :delete },
       class: "btn btn-outline-primary btn-sm" %>
+    <% end %>
   </ul>
   <% end %>
   <%= render "post_comments/post_comments_form", post: post %>

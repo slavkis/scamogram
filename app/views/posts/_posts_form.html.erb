@@ -1,15 +1,15 @@
 <h5>Create new post here:</h5>
-<%= form_for(Post.new, url: posts_path(@post))do |f| %>
-  <form>
-    <div class="mb-3">
-      <%= f.label :title, class: "form-label" %><br />
-      <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
-    </div>
+  <%= form_for(Post.new, url: posts_path(post))do |f| %>
+    <form>
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label" %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+      </div>
 
-    <div class="mb-3">
-      <%= f.label :body, class: "form-label" %><br />
-      <%= f.text_area :body, autofocus: true, autocomplete: "body", class: "form-control" %>
-    </div>
-      <%= f.submit "Post", class: "btn btn-outline-primary" %>
-  </form>
-<% end %>
+      <div class="mb-3">
+        <%= f.label :body, class: "form-label" %><br />
+        <%= f.text_area :body, autofocus: true, autocomplete: "body", class: "form-control" %>
+      </div>
+        <%= f.submit "Post", class: "btn btn-outline-primary" %>
+    </form>
+  <% end %>
