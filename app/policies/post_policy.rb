@@ -6,6 +6,14 @@ class PostPolicy
     @post = post
   end
 
+  def update?
+    @user.id == @post.user_id
+  end
+
+  def edit?
+    @user.id == @post.user_id
+  end
+
   def create?
     true
   end

@@ -6,6 +6,14 @@ class PostCommentPolicy
     @post_comment = post_comment
   end
 
+  def update?
+    @user.id == @post_comment.user_id
+  end
+
+  def edit?
+    @user.id == @post_comment.user_id
+  end
+
   def create?
     true
   end

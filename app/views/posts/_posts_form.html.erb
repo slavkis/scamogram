@@ -3,12 +3,12 @@
     <form>
       <div class="mb-3">
         <%= f.label :title, class: "form-label" %><br />
-        <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+        <%= f.text_field :title, class: "form-control" %>
       </div>
 
       <div class="mb-3">
         <%= f.label :body, class: "form-label" %><br />
-        <%= f.text_area :body, autofocus: true, autocomplete: "body", class: "form-control" %>
+        <%= f.text_area :body, class: "form-control" %>
       </div>
         <%= f.submit "Post", class: "btn btn-outline-primary" %>
     </form>
