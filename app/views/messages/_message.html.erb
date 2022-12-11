@@ -10,11 +10,11 @@
       </div> 
       <div class="card-body mt-3">
         <%= message.body %>
-      </div>
       <% if message.user == current_user %>
         <p><%= link_to "Delete message", message_path(id: message.id), data: { turbo_method: :delete },
           class: "btn btn-outline-secondary btn-sm float-end" %></p>
       <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

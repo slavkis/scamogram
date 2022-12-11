@@ -1,6 +1,4 @@
 class ChatsController < ApplicationController
-  # before_action :check_chat_presence, only: :create
-
   def index
     @chats = Chat.where("recipient_id = ? OR user_id = ?", current_user.id, current_user.id)
   end
@@ -22,13 +20,4 @@ class ChatsController < ApplicationController
   def chat_params
     params.permit(:recipient_id)
   end
-
-  # def check_chat_presence
-  #   chat = Chat.where("recipient_id = ? OR user_id = ?", current_user.id, current_user.id)
-  #   if chat.present?
-  #     redirect_to chat_path(chat)
-  #   else
-  #     return
-  #   end
-  # end
 end
