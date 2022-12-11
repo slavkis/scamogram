@@ -1,9 +1,11 @@
-<%= form_for(Message.new, url: messages_path(user_id: user.id, chat_id: params[:id])) do |f| %>
-  <form>
-    <div class="mb-3">
-      <%= f.label "Write your message here:", class: "form-label" %><br />
-      <%= f.text_field :body, class: "form-control" %>
-    </div>
-    <%= f.submit "Send message", class: "btn btn-outline-primary btn-sm" %>
-  </form><br /><br />
-<% end %>
+<div class="card">
+  <div class="card-body">
+    <%= form_for(Message.new, url: messages_path(user_id: user.id, chat_id: params[:id])) do |f| %>
+        <div class="mb-3">
+          <%= f.label "Write your message here:", class: "form-label" %><br />
+          <%= f.text_field :body, class: "form-control" %>
+        </div>
+        <%= f.submit "Send message", class: "btn btn-outline-secondary btn-sm" %>
+    <% end %>
+  </div>
+</div>

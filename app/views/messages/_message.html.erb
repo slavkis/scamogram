@@ -1,8 +1,20 @@
-<% chat.messages.each do |message| %>
-  <% if message.body.present? %>
-    <%= message.user.name %>:<br />
-    <p><%= message.body %></p>
-    <%= link_to "Delete message", message_path(id: message.id), data: { turbo_method: :delete },
-        class: "btn btn-outline-primary btn-sm"%><br /><br />
+<div class="card mb-5" style="min-width: 30rem; max-width: 30rem;">
+  <% chat.messages.each do |message| %>
+    <% if message.body.present? %>
+      <% if message.user == current_user %>
+        <div class="card-header">
+      <% else %>
+        <div class="card-header bg-secondary">
+      <% end %>
+        <%= message.user.name %>
+      </div> 
+      <div class="card-body mt-3">
+        <%= message.body %>
+      </div>
+      <% if message.user == current_user %>
+        <p><%= link_to "Delete message", message_path(id: message.id), data: { turbo_method: :delete },
+          class: "btn btn-outline-secondary btn-sm float-end" %></p>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

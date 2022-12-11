@@ -1,11 +1,11 @@
-<%= form_for(PostComment.new, url: post_post_comments_path(post_id: post.id)) do |f| %>
-  <form>
-    <div class="mb-3">
-      <b>
-        <%= f.label "write your comment:", class: "form-label" %><br />
-      </b>
-      <%= f.text_field :body, class: "form-control" %>
-    </div>
-    <%= f.submit "Comment", class: "btn btn-outline-primary btn-sm" %>
-  </form><br /><br />
-<% end %>
+<div class="card-body mt-3">
+  <%= form_for(PostComment.new, url: post_post_comments_path(post_id: post.id)) do |f| %>
+      <div class="mb-3">
+        <b>
+          <%= f.label "write your comment:", class: "form-label" %><br />
+        </b>
+        <%= f.text_field :body, class: "form-control" %>
+      </div>
+      <%= f.submit "Comment", class: "btn btn-outline-secondary btn-sm" %>
+  <% end %>
+</div>

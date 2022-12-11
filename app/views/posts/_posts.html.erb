@@ -1,34 +1,37 @@
 <% if @user.posts.any? %>
-  <h3>Posts:</h3>
+  <h3 class="mb-5 text-center"><%= @user.name%>'s posts:</h3>
 <% end %>
 <% @user.posts.each do |post| %>
-  <ul>
-    Post title: <strong><%= post.title %></strong>
-  </ul>
-  <ul>
-    Body: <%= post.body %>
-  </ul>
-  <ul>
-  <% if policy(post).destroy? %>
-    <%= link_to "Delete post",
-      post_path(id: post.id, user_id: params[:id]),
-      data: { turbo_method: :delete },
-      class: "btn btn-outline-primary btn-sm" %>
-  <% end %>
-  </ul>
-  <% post.post_comments.each do |post_comment| %>
-    <b><%= post_comment.user.name %>:</b><br />
-    <p>Comment: <%= post_comment.body %></p>
-    <% if policy(post_comment).destroy? %>
-      <%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id),
-        data: { turbo_method: :delete },
-        class: "btn btn-outline-primary btn-sm" %>
-    <% end %>
-    <% if policy(post_comment).edit? %>
-          <%= link_to "edit", edit_post_post_comment_path(post_id: post.id, id: post_comment.id),
-            class: "btn btn-outline-primary btn-sm" %>
-    <% end %><br /><br />
-  <% end %>
+  <div class="card mb-3", style="max-width: 30rem; min-width: 30rem;">
+    <div class="card-header">
+      <h6><%= post.title %></h6>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= post.body %></p>
+      <% if policy(post).destroy? %>
+        <%= link_to "Delete post",
+          post_path(id: post.id, user_id: params[:id]),
+          data: { turbo_method: :delete },
+          class: "btn btn-outline-secondary btn-sm float-end" %>
+      <% end %>
+    </div>
+
+    <div class="card m-4">
+      <% post.post_comments.each do |post_comment| %>
+        <div class="card-header">
+          <%= post_comment.user.name %>
+        </div>
+        <div class="card-body"> 
+          <%= post_comment.body %>
+          <% if policy(post_comment).destroy? %>
+            <p><%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id),
+              data: { turbo_method: :delete },
+              class: "btn btn-outline-secondary btn-sm float-end" %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <%= render "post_comments/post_comments_form", post: post %>
+  </div>
 <% end %>
 

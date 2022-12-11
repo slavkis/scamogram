@@ -1,16 +1,19 @@
-  <%= form_for(Post.new, url: posts_path(post))do |f| %>
-    <form>
-      <div class="mb-3">
-        <b>
-          <%= f.label "write your post:", class: "form-label" %><br />
-        </b>  
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
+<div class="card", style="margin-top: 5em">
+  <div class="card-body">
+    <%= form_for(Post.new, url: posts_path(post))do |f| %>
+      <form>
+        <div class="mb-3">
+          <b>
+            <%= f.label "write new post here:", class: "form-label" %><br />
+          </b>  
+          <%= f.text_field :title, placeholder: "Post's title", class: "form-control mt-4" %>
+        </div>
 
-      <div class="mb-3">
-        <%= f.label :body, class: "form-label" %><br />
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-        <%= f.submit "Post", class: "btn btn-outline-primary" %>
-    </form>
-  <% end %>
+        <div class="mb-3">
+          <%= f.text_area :body, placeholder: "write it here!", class: "form-control" %>
+        </div>
+          <%= f.submit "Post", class: "btn btn-outline-secondary btn-sm" %>
+      </form>
+    <% end %>
+  </div>
+</div>
