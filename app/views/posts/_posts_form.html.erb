@@ -1,8 +1,9 @@
-<h5>Create new post here:</h5>
   <%= form_for(Post.new, url: posts_path(post))do |f| %>
     <form>
       <div class="mb-3">
-        <%= f.label :title, class: "form-label" %><br />
+        <b>
+          <%= f.label "write your post:", class: "form-label" %><br />
+        </b>  
         <%= f.text_field :title, class: "form-control" %>
       </div>
 

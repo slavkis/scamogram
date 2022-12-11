@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <% @chats.each do |chat| %>
+        <ul>
+          <% if chat.user == current_user %>
+            <%= link_to "#{User.find(chat.recipient_id).name}", user_path(chat.recipient_id) %>
+          <% else %>
+            <%= link_to "#{chat.user.name}", user_path(chat.user) %>
+          <% end %>
+          <p>
+            <%= link_to "Go to chat", chat_path(chat), class: "btn btn-outline-primary btn-sm"%>
+          </p>
+        </ul>
+      <% end %>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
