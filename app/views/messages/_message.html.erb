@@ -1,0 +1,8 @@
+<% chat.messages.each do |message| %>
+  <% if message.body.present? %>
+    <%= message.user.name %>:<br />
+    <p><%= message.body %></p>
+    <%= link_to "Delete message", message_path(id: message.id), data: { turbo_method: :delete },
+        class: "btn btn-outline-primary btn-sm"%><br /><br />
+  <% end %>
+<% end %>

@@ -17,13 +17,8 @@
   <% end %>
   </ul>
   <% post.post_comments.each do |post_comment| %>
-  <ul>
-    Author: <%= post_comment.user.name %>
-  </ul>
-  <ul>
-    Comment: <%= post_comment.body %>
-  </ul>
-  <ul>
+    <b><%= post_comment.user.name %>:</b><br />
+    <p>Comment: <%= post_comment.body %></p>
     <% if policy(post_comment).destroy? %>
       <%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id),
         data: { turbo_method: :delete },
@@ -32,8 +27,7 @@
     <% if policy(post_comment).edit? %>
           <%= link_to "edit", edit_post_post_comment_path(post_id: post.id, id: post_comment.id),
             class: "btn btn-outline-primary btn-sm" %>
-    <% end %>
-  </ul>
+    <% end %><br /><br />
   <% end %>
   <%= render "post_comments/post_comments_form", post: post %>
 <% end %>

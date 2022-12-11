@@ -1,0 +1,6 @@
+<% users.each do |user| %>
+  <ul>
+    <%= link_to "#{user.name}", user_path(id: user.id) %><br />
+    <%= button_to "Send message", chats_path(owner_id: current_user.id, recipient_id: user.id), method: :post, class: 'btn btn-outline-primary btn-sm' %>
+  </ul>
+<% end %>
