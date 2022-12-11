@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col mt-4">
-      <% @recipients.each do |recipient| %>
+      <% @chats.each do |chat| %>
         <ul>
-          <% if recipient.id == current_user.id %>
-            <%= link_to "#{recipient.name}", user_path(recipient) %>
+          <% if chat.user == current_user %>
+            <%= link_to "#{User.find(chat.recipient_id).name}", user_path(chat.recipient_id) %>
           <% else %>
-            <%= link_to "#{current_user.name}", user_path(recipient) %>
+            <%= link_to "#{chat.user.name}", user_path(chat.user) %>
           <% end %>
           <p>
-            <%= link_to "Go to chat", chat_path(Chat.find_by(recipient_id: recipient.id)), class: "btn btn-outline-primary btn-sm"%>
+            <%= link_to "Go to chat", chat_path(chat), class: "btn btn-outline-primary btn-sm"%>
           </p>
         </ul>
       <% end %>

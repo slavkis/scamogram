@@ -15,10 +15,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_222737) do
   enable_extension "plpgsql"
 
   create_table "chats", force: :cascade do |t|
-    t.integer "owner_id", null: false
+    t.bigint "user_id"
     t.integer "recipient_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_222737) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chats", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "post_comments", "posts"
