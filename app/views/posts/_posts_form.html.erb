@@ -1,4 +1,4 @@
-<div class="card", style="margin-top: 5em">
+<div class="card mt-4">
   <div class="card-body">
     <%= form_for(Post.new, url: posts_path(post))do |f| %>
       <form>
@@ -12,7 +12,7 @@
         <div class="mb-3">
           <%= f.text_area :body, placeholder: "write it here!", class: "form-control" %>
         </div>
-          <%= f.submit "Post", class: "btn btn-outline-secondary btn-sm" %>
+          <%= f.submit "Post", class: "btn btn-outline-secondary w-100" %>
       </form>
     <% end %>
   </div>

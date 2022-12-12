@@ -2,9 +2,9 @@
   <%= form_for(PostComment.new, url: post_post_comments_path(post_id: post.id)) do |f| %>
       <div class="mb-3">
         <b>
-          <%= f.label "write your comment:", class: "form-label" %><br />
+          <%= f.label "write your comment:", class: "form-label" %>
         </b>
-        <%= f.text_field :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control form-control-sm" %>
       </div>
       <%= f.submit "Comment", class: "btn btn-outline-secondary btn-sm" %>
   <% end %>

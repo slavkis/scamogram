@@ -18,17 +18,13 @@
         <li class="nav-item">
           <%= link_to "Chats", chats_path, class: "nav-link" %>
         </li>
+        <%= link_to "Scam Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+      <% else %>
+        <%= link_to "Scam in", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Scam up", new_user_registration_path, class: "nav-link" %>
+        </li>
       <% end %>
-      <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to "Scam Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-        <% else %>
-          <%= link_to "Scam in", new_user_session_path, class: "nav-link" %>
-          <li class="nav-item">
-            <%= link_to "Scam up", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </li>
     </ul>
   </div>
 </nav>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   }
   root "main_pages#index"
   resources :users, only: [:show, :index]
-  resources :posts do
+  resources :posts, only: [:create, :destroy] do
     resources :post_comments
   end
   resources :messages, only: [:create, :destroy]
