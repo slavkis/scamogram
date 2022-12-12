@@ -13,9 +13,6 @@ class PostCommentsController < ApplicationController
     end   
   end
 
-  def edit
-  end
-
   def update
     @post_comment = @post.post_comments.find(params[:id])
     if @post_comment.update(post_comment_params)

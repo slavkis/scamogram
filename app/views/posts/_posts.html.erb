@@ -2,7 +2,7 @@
   <h3 class="mb-5 text-center"><%= @user.name%>'s posts:</h3>
 <% end %>
 <% @user.posts.each do |post| %>
-  <div class="card mb-3", style="max-width: 30rem; min-width: 30rem;">
+  <div class="card mb-3 border border-4", style="max-width: 30rem; min-width: 30rem;">
     <div class="card-header">
       <h6><%= post.title %></h6>
     </div>
@@ -16,15 +16,15 @@
       <% end %>
     </div>
 
-    <div class="card m-3">
+    <div class="card m-3 border border-3">
       <% post.post_comments.each do |post_comment| %>
         <div class="card-header">
           <%= post_comment.user.name %>
         </div>
-        <div class="card-body"> 
+        <div class="card-body border-bottom"> 
           <%= post_comment.body %>
           <% if policy(post_comment).destroy? %>
-            <p><%= link_to "Delete comment", post_post_comment_path(post_id: post.id, id: post_comment.id),
+            <p><%= link_to "Delete comment", post_comment_path(post_id: post.id, id: post_comment.id),
               data: { turbo_method: :delete },
               class: "btn btn-outline-secondary btn-sm float-end" %></p>
           <% end %>

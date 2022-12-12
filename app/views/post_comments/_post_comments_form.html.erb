@@ -1,5 +1,5 @@
 <div class="card-body mt-3">
-  <%= form_for(PostComment.new, url: post_post_comments_path(post_id: post.id)) do |f| %>
+  <%= form_for(PostComment.new, url: post_comments_path(post_id: post.id)) do |f| %>
       <div class="mb-3">
         <b>
           <%= f.label "write your comment:", class: "form-label" %>
