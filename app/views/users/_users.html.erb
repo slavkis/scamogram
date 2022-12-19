@@ -1,8 +1,11 @@
+<h3 class="mb-5 text-center">Scamers list:</h3>
 <% users.each do |user| %>
-  <ul>
-    <%= link_to "#{user.name}", user_path(id: user.id) %><br />
-    <% unless user == current_user %>
-      <%= button_to "Send message", chats_path(recipient_id: user.id), method: :post, class: 'btn btn-outline-primary btn-sm' %>
-    <% end %>
-  </ul>
+  <div class="card border border-4 mb-2" style="max-width: 23rem; min-width: 23rem; margin-left: auto;">
+      <div class="card-header"><%= link_to "#{user.name}", user_path(id: user.id), class: "link-secondary" %></div>
+    <div class="card-body">
+      <% unless user == current_user %>
+        <%= button_to "Send message", chats_path(recipient_id: user.id), method: :post, class: 'btn btn-outline-secondary btn-sm' %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

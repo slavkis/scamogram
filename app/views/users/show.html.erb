@@ -1,14 +1,7 @@
 <div class="container">
   <div class="row g-4">
-    <div class="col" style="margin-top: 8.2rem;">
-      <div class="card border border-4">
-        <div class="card-body">
-          <%= image_tag @user.avatar.url(:thumb) if @user.avatar.present? %> 
-          <h4>
-            Hey, <%= @user.name %>, bro!
-          </h4>
-        </div>
-      </div> 
+    <div class="col mt-5">
+      <%= render 'users/profile', user: @user %>
       <% if @user.id == current_user.id %>
         <%= render 'posts/posts_form', post: @post %>
       <% end %>
@@ -16,7 +9,8 @@
     <div class="col mt-5">
       <%= render 'posts/posts' %>
     </div>
-    <div class="col">
+    <div class="col mt-5">
+      <%= render 'users', users: @users %>
     </div>
   </div>
 </div>

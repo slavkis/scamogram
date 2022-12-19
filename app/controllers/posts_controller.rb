@@ -4,17 +4,26 @@ class PostsController < ApplicationController
     authorize @post
     if @post.save
       flash[:success] = "Yep! Nice new post, bro!"
-      redirect_to @post
+      respond_to do |format|
+        format.html { redirect_back fallback_location: @post }
+        format.js
+      end
     else
       flash[:danger] = "Be careful, bro!"
-      redirect_to current_user
+      respond_to do |format|
+        format.html { redirect_back fallback_location: @post }
+        format.js
+      end
     end  
   end
 
   def destroy
     @post = Post.find(params[:id]).destroy
     flash[:success] = "Post deleted!"
-    redirect_to request.referrer || root_path
+    respond_to do |format|
+      format.html { redirect_back fallback_location: @post }
+      format.js
+    end
   end
 
   def post_params

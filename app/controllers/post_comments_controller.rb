@@ -6,10 +6,10 @@ class PostCommentsController < ApplicationController
     authorize @post_comment
     if @post_comment.save
       flash[:success] = "Yep! Nice new comment, bro!"
-      redirect_to @post
+      redirect_back fallback_location: @post_comment
     else
       flash[:danger] = "Be careful, bro!"
-      redirect_to @post
+      redirect_back fallback_location: @post_comment
     end   
   end
 
@@ -22,7 +22,7 @@ class PostCommentsController < ApplicationController
 
   def destroy
     @post_comment = @post.post_comments.find(params[:id]).destroy
-    redirect_to @post
+    redirect_back fallback_location: @post_comment
   end
 
   private
